@@ -8,124 +8,263 @@
 <title>Кристальный алтарь 2 — установить обновление</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&family=Unbounded:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Unbounded:wght@700;800&display=swap">
 <style>
 :root{
-  --bg:#05060c;--ink:#eef2ff;--mute:#9aa3c7;--vio:#8a5cff;--cyan:#4de2ff;--gold:#ffd76a;--line:rgba(160,150,255,.22);
+  --bg:#05060c;--ink:#eef2ff;--mute:#9aa3c7;--vio:#8a5cff;--cyan:#4de2ff;--gold:#ffd76a;--ok:#6ee08a;
+  --line:rgba(160,150,255,.22);--card:rgba(255,255,255,.035);
   --fh:Unbounded,"Segoe UI",system-ui,sans-serif;--fb:Manrope,"Segoe UI",system-ui,sans-serif;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *,*::before,*::after{box-sizing:inherit}
-html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
 body{margin:0;min-height:100vh;color:var(--ink);font:500 16px/1.55 var(--fb);
   background:radial-gradient(70vmax 50vmax at 50% -10%,rgba(138,92,255,.35),transparent 60%),
              radial-gradient(50vmax 40vmax at 100% 60%,rgba(77,226,255,.14),transparent 60%),var(--bg)}
-main{max-width:620px;margin:0 auto;padding:36px 20px 56px}
-.crystal{width:min(52vw,210px);aspect-ratio:3/4;margin:6px auto 26px;position:relative;
-  filter:drop-shadow(0 0 34px rgba(138,92,255,.6)) drop-shadow(0 0 80px rgba(77,226,255,.25));animation:float 6s ease-in-out infinite}
+main{max-width:620px;margin:0 auto;padding:22px 18px 56px}
+.top{display:flex;justify-content:flex-end;min-height:34px}
+.lang{font:700 13px var(--fb);color:var(--mute);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+.lang:focus-visible,.btn:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+.crystal{width:min(34vw,140px);aspect-ratio:3/4;margin:0 auto 18px;position:relative;
+  filter:drop-shadow(0 0 30px rgba(138,92,255,.6)) drop-shadow(0 0 70px rgba(77,226,255,.25));animation:float 6s ease-in-out infinite}
 .crystal i{position:absolute;inset:0;display:block}
 .crystal .a{clip-path:polygon(50% 0,100% 30%,50% 100%,0 30%);background:linear-gradient(135deg,#d9c8ff,#8a5cff 55%,#3a1fa8)}
 .crystal .b{clip-path:polygon(50% 0,100% 30%,50% 38%);background:linear-gradient(160deg,#fff,#b9f3ff 60%,#4de2ff)}
 .crystal .c{clip-path:polygon(50% 0,0 30%,50% 38%);background:linear-gradient(200deg,#e7dcff,#8a5cff)}
 .crystal .d{clip-path:polygon(50% 38%,100% 30%,50% 100%);background:linear-gradient(120deg,rgba(255,255,255,0),rgba(20,10,80,.55))}
-@keyframes float{50%{transform:translateY(-10px)}}
-h1{font:800 clamp(28px,8.4vw,44px)/1.08 var(--fh);margin:0 0 12px;text-align:center;letter-spacing:-.02em;
+@keyframes float{50%{transform:translateY(-8px)}}
+h1{font:800 clamp(26px,7.6vw,40px)/1.1 var(--fh);margin:0 0 10px;text-align:center;letter-spacing:-.02em;
   background:linear-gradient(90deg,#c9a8ff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
-.lead{text-align:center;color:var(--mute);margin:0 auto 24px;max-width:46ch}
-.ver{display:block;text-align:center;color:var(--gold);font-weight:700;margin:-10px 0 22px;min-height:1.5em}
-.btns{display:grid;gap:12px;margin-bottom:40px}
-.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:58px;padding:14px 22px;border-radius:16px;
-  font:700 17px var(--fb);text-decoration:none;color:#fff;border:1px solid transparent;transition:transform .15s}
+.lead{text-align:center;color:var(--mute);margin:0 auto 20px;max-width:44ch}
+
+.card{border:1px solid var(--line);border-radius:20px;background:var(--card);padding:16px 18px}
+.vcard{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+.vlabel{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700}
+.vnum{font:800 26px/1.15 var(--fh);color:var(--gold);margin-top:2px}
+.vmeta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:6px;color:var(--mute);font-size:13.5px}
+.badge{flex:none;font:800 12px var(--fb);color:#06130a;background:var(--ok);border-radius:999px;padding:5px 11px;letter-spacing:.02em}
+.skel{display:inline-block;height:1em;width:7em;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.06),rgba(255,255,255,.16),rgba(255,255,255,.06));background-size:200% 100%;animation:sh 1.2s linear infinite;vertical-align:middle}
+@keyframes sh{to{background-position:-200% 0}}
+
+.btns{display:grid;gap:10px;margin-bottom:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;min-height:60px;padding:12px 20px;border-radius:16px;
+  font:800 17px var(--fb);text-decoration:none;color:#fff;border:1px solid transparent;transition:transform .15s,filter .15s;cursor:pointer;text-align:left}
 .btn:active{transform:scale(.98)}
-.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.btn svg{width:24px;height:24px;flex:none}
+.btn small{display:block;font:600 12.5px var(--fb);opacity:.85;margin-top:1px}
 .btn.main{background:linear-gradient(90deg,var(--vio),#4d7dff 60%,var(--cyan));box-shadow:0 10px 30px -10px rgba(77,226,255,.7)}
-.btn.alt{background:rgba(255,255,255,.04);border-color:var(--line);color:var(--ink)}
-.btn svg{width:22px;height:22px;flex:none}
-h2{font:700 20px/1.2 var(--fh);margin:0 0 14px}
-.how{display:grid;gap:14px}
-.how section{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
-.how h3{margin:0 0 10px;font:700 17px var(--fb)}
-ol{margin:0;padding-left:22px}
-li{margin:6px 0}
-li::marker{color:var(--gold);font-weight:700}
-.note{margin-top:26px;color:var(--mute);font-size:14px;text-align:center}
-@media(min-width:640px){.btns{grid-template-columns:1fr 1fr}.how{grid-template-columns:1fr 1fr}}
-@media(prefers-reduced-motion:reduce){.crystal{animation:none}.btn{transition:none}}
+.btn.alt{background:var(--card);border-color:var(--line);color:var(--ink)}
+.btn.done{background:linear-gradient(90deg,#2fae5c,#4cc97f);box-shadow:0 10px 30px -10px rgba(110,224,138,.6)}
+.hint{display:none;text-align:center;color:var(--mute);font-size:14px;margin:0 0 12px}
+body[data-dev="ios"] .hint.ios,body[data-dev="desk"] .hint.desk{display:block}
+body[data-dev="ios"] #dl{display:none}
+body[data-dev="ios"] #play{order:-1;background:linear-gradient(90deg,var(--vio),#4d7dff 60%,var(--cyan));border-color:transparent;color:#fff}
+#copy{display:none}
+body[data-dev="desk"] #copy{display:flex}
+
+.news{margin:0 0 22px}
+.news[hidden]{display:none}
+.news h2{margin-bottom:8px}
+.news pre{margin:0;white-space:pre-wrap;word-break:break-word;font:500 14.5px/1.55 var(--fb);color:var(--ink)}
+
+h2{font:700 19px/1.2 var(--fh);margin:26px 0 14px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:s}
+.steps li{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:var(--card);transition:border-color .25s,background .25s;counter-increment:s}
+.steps li::before{content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 14px var(--fh);color:var(--gold);border:1.5px solid var(--gold)}
+.steps b{display:block}
+.steps span{color:var(--mute);font-size:14px}
+.steps li.on{border-color:var(--cyan);background:rgba(77,226,255,.07)}
+.steps li.on::before{background:var(--cyan);border-color:var(--cyan);color:#04121a}
+.steps li.ok::before{content:"✓";background:var(--ok);border-color:var(--ok);color:#06130a}
+
+details{border:1px solid var(--line);border-radius:16px;background:var(--card);margin-bottom:10px}
+summary{cursor:pointer;list-style:none;padding:14px 16px;font-weight:700;display:flex;justify-content:space-between;gap:12px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:800 20px var(--fb);color:var(--gold);flex:none;transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details>div{padding:0 16px 14px;color:var(--mute);font-size:14.5px}
+details>div p{margin:0 0 8px}
+details>div ol{margin:6px 0 0;padding-left:20px}
+details>div li{margin:4px 0}
+details.ioscard{border-color:rgba(77,226,255,.5)}
+.note{margin-top:22px;color:var(--mute);font-size:13.5px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;pointer-events:none;
+  background:#12142a;border:1px solid var(--line);color:var(--ink);padding:11px 16px;border-radius:12px;font-weight:700;font-size:14px;max-width:90vw;text-align:center;transition:.25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){.crystal,.skel{animation:none}.btn,.toast{transition:none}}
 </style>
 </head>
-<body>
+<body data-dev="and">
 <main>
+  <div class="top"><button class="lang" id="lang" type="button" aria-label="Language">EN</button></div>
   <div class="crystal" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i></div>
 
   <h1 data-ru="Кристальный алтарь 2" data-en="Crystal Altar 2">Кристальный алтарь 2</h1>
-  <p class="lead" data-ru="Установи новую версию игры. Прогресс сохранится на твоём аккаунте."
-     data-en="Install the new version of the game. Your progress stays on your account.">Установи новую версию игры. Прогресс сохранится на твоём аккаунте.</p>
-  <span class="ver" id="ver"></span>
+  <p class="lead" data-ru="Установи свежую версию игры. Прогресс сохранится на твоём аккаунте."
+     data-en="Install the latest version of the game. Your progress stays on your account.">Установи свежую версию игры. Прогресс сохранится на твоём аккаунте.</p>
+
+  <div class="card vcard" aria-live="polite">
+    <div>
+      <div class="vlabel" data-ru="Последняя версия" data-en="Latest version">Последняя версия</div>
+      <div class="vnum" id="vnum"><span class="skel"></span></div>
+      <div class="vmeta"><span id="vdate"></span><span id="vsize"></span></div>
+    </div>
+    <span class="badge" id="vbadge" data-ru="Свежая" data-en="Latest" hidden>Свежая</span>
+  </div>
 
   <div class="btns">
     <a class="btn main" id="dl" href="#">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 20h16"/></svg>
-      <span data-ru="Скачать для Android (APK)" data-en="Download for Android (APK)">Скачать для Android (APK)</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 20h16"/></svg>
+      <span><span id="dltxt" data-ru="Скачать для Android" data-en="Download for Android">Скачать для Android</span><small id="dlsub">Crystal-Altar.apk</small></span>
     </a>
     <a class="btn alt" id="play" href="#">
-      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       <span data-ru="Играть в браузере" data-en="Play in browser">Играть в браузере</span>
     </a>
+    <button class="btn alt" id="copy" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>
+      <span data-ru="Скопировать ссылку для телефона" data-en="Copy link for your phone">Скопировать ссылку для телефона</span>
+    </button>
   </div>
+  <p class="hint ios" data-ru="APK работает только на Android. На iPhone добавь игру на экран «Домой» — инструкция ниже."
+     data-en="The APK works on Android only. On iPhone, add the game to your Home Screen — see below.">APK работает только на Android. На iPhone добавь игру на экран «Домой» — инструкция ниже.</p>
+  <p class="hint desk" data-ru="Ты на компьютере. Открой эту страницу на Android-телефоне, чтобы установить игру."
+     data-en="You're on a computer. Open this page on an Android phone to install the game.">Ты на компьютере. Открой эту страницу на Android-телефоне, чтобы установить игру.</p>
 
-  <h2 data-ru="Как установить" data-en="How to install">Как установить</h2>
-  <div class="how">
-    <section>
-      <h3>Android</h3>
+  <section class="card news" id="news" hidden>
+    <h2 style="margin-top:0" data-ru="Что нового" data-en="What's new">Что нового</h2>
+    <pre id="newstxt"></pre>
+  </section>
+
+  <h2 data-ru="Как установить на Android" data-en="How to install on Android">Как установить на Android</h2>
+  <ol class="steps" id="steps">
+    <li class="on" data-s="1"><div><b data-ru="Скачай файл" data-en="Download the file">Скачай файл</b><span data-ru="Нажми синюю кнопку выше. Загрузка начнётся сама." data-en="Tap the blue button above. The download starts on its own.">Нажми синюю кнопку выше. Загрузка начнётся сама.</span></div></li>
+    <li data-s="2"><div><b data-ru="Открой Crystal-Altar.apk" data-en="Open Crystal-Altar.apk">Открой Crystal-Altar.apk</b><span data-ru="Нажми на загрузку в шторке уведомлений или найди файл в «Загрузках»." data-en="Tap the download in your notifications or find it in Downloads.">Нажми на загрузку в шторке уведомлений или найди файл в «Загрузках».</span></div></li>
+    <li data-s="3"><div><b data-ru="Разреши установку и нажми «Обновить»" data-en="Allow the install and tap Update">Разреши установку и нажми «Обновить»</b><span data-ru="Если телефон спросит про «неизвестные источники» — разреши для браузера. Ставь поверх старой версии, удалять не нужно." data-en="If asked about unknown sources, allow it for your browser. Install over the old version, no need to uninstall.">Если телефон спросит про «неизвестные источники» — разреши для браузера. Ставь поверх старой версии, удалять не нужно.</span></div></li>
+  </ol>
+
+  <h2 data-ru="Вопросы" data-en="Questions">Вопросы</h2>
+  <details class="ioscard" id="iosd">
+    <summary data-ru="Как играть на iPhone?" data-en="How do I play on iPhone?">Как играть на iPhone?</summary>
+    <div>
       <ol>
-        <li data-ru="Нажми «Скачать для Android» и дождись загрузки" data-en="Tap Download for Android and wait for it to finish">Нажми «Скачать для Android» и дождись загрузки</li>
-        <li data-ru="Открой скачанный файл Crystal-Altar.apk" data-en="Open the downloaded Crystal-Altar.apk">Открой скачанный файл Crystal-Altar.apk</li>
-        <li data-ru="Если телефон спросит, разреши установку из этого источника" data-en="If asked, allow installs from this source">Если телефон спросит, разреши установку из этого источника</li>
-        <li data-ru="Нажми «Обновить» или «Установить»" data-en="Tap Update or Install">Нажми «Обновить» или «Установить»</li>
-      </ol>
-    </section>
-    <section>
-      <h3>iPhone, Safari</h3>
-      <ol>
-        <li data-ru="Нажми «Играть в браузере»" data-en="Tap Play in browser">Нажми «Играть в браузере»</li>
+        <li data-ru="Открой эту страницу в Safari и нажми «Играть в браузере»" data-en="Open this page in Safari and tap Play in browser">Открой эту страницу в Safari и нажми «Играть в браузере»</li>
         <li data-ru="Нажми «Поделиться»" data-en="Tap Share">Нажми «Поделиться»</li>
         <li data-ru="Выбери «На экран Домой» и нажми «Добавить»" data-en="Choose Add to Home Screen, then Add">Выбери «На экран Домой» и нажми «Добавить»</li>
       </ol>
-    </section>
-  </div>
+    </div>
+  </details>
+  <details>
+    <summary data-ru="Потеряется ли мой прогресс?" data-en="Will I lose my progress?">Потеряется ли мой прогресс?</summary>
+    <div><p data-ru="Нет. Прогресс хранится на твоём аккаунте, а не в телефоне. Войди в тот же аккаунт после установки." data-en="No. Your progress is stored on your account, not on the phone. Just sign in to the same account after installing.">Нет. Прогресс хранится на твоём аккаунте, а не в телефоне. Войди в тот же аккаунт после установки.</p></div>
+  </details>
+  <details>
+    <summary data-ru="Телефон ругается на безопасность" data-en="My phone shows a security warning">Телефон ругается на безопасность</summary>
+    <div><p data-ru="Так бывает с файлами не из Google Play. Нажми «Подробнее» → «Всё равно установить» (или «Установить без сканирования»). Если браузер блокирует загрузку, разреши её в уведомлении." data-en="This happens with files from outside Google Play. Tap More details → Install anyway (or Install without scanning). If the browser blocks the download, allow it in the prompt.">Так бывает с файлами не из Google Play. Нажми «Подробнее» → «Всё равно установить» (или «Установить без сканирования»). Если браузер блокирует загрузку, разреши её в уведомлении.</p></div>
+  </details>
+  <details>
+    <summary data-ru="Пишет «Приложение не установлено»" data-en="It says “App not installed”">Пишет «Приложение не установлено»</summary>
+    <div><p data-ru="Скорее всего, старая версия подписана другим ключом. Удали игру и поставь новую — прогресс вернётся после входа в аккаунт. Также проверь, что на телефоне хватает места." data-en="Most likely the old version was signed with a different key. Uninstall the game and install the new one — your progress returns when you sign in. Also make sure you have free storage.">Скорее всего, старая версия подписана другим ключом. Удали игру и поставь новую — прогресс вернётся после входа в аккаунт. Также проверь, что на телефоне хватает места.</p></div>
+  </details>
 
-  <p class="note" data-ru="Поверх старой версии можно ставить без удаления: прогресс не потеряется. Для игры нужен интернет."
-     data-en="Install over the old version without uninstalling: your progress is kept. The game needs an internet connection.">Поверх старой версии можно ставить без удаления: прогресс не потеряется. Для игры нужен интернет.</p>
+  <p class="note" data-ru="Для игры нужен интернет." data-en="The game needs an internet connection.">Для игры нужен интернет.</p>
 </main>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
 /* ============ НАСТРОЙКИ — меняйте только этот блок ============ */
 var CONFIG = {
-  APK_URL:  "https://github.com/darklegend9638-gif/test/releases/latest/download/Crystal-Altar.apk", // всегда последний APK из GitHub Releases
+  REPO:     "darklegend9638-gif/test",   // репозиторий приложения (откуда берутся релизы)
+  APK_NAME: "Crystal-Altar.apk",         // имя файла в релизе
   GAME_URL: "https://crystal-altar-update.onrender.com/", // адрес браузерной версии игры
-  VERSION:  ""                           // например "Версия 42" — пусто, если не нужно
+  VERSION:  ""                           // можно вписать вручную, например "Версия 42"; пусто — берётся из релиза
 };
 /* ============================================================== */
 (function(){
-  var ru=/^(ru|uk|be|kk)/i.test((navigator.languages&&navigator.languages[0])||navigator.language||"ru");
-  var lang=ru?"ru":"en";
-  document.documentElement.lang=lang;
-  document.querySelectorAll("[data-ru]").forEach(function(e){e.textContent=e.getAttribute("data-"+lang)});
-  document.title=ru?"Кристальный алтарь 2 — установить обновление":"Crystal Altar 2 — install the update";
-  var dl=document.getElementById("dl"),play=document.getElementById("play");
-  dl.href=CONFIG.APK_URL;dl.setAttribute("download","Crystal-Altar.apk");
-  play.href=CONFIG.GAME_URL;
-  var ver=document.getElementById("ver");
-  ver.textContent=CONFIG.VERSION;
-  /* подтягиваем номер последней сборки; если нет сети или лимит API — тихо пропускаем */
-  try{
-    fetch("https://api.github.com/repos/darklegend9638-gif/test/releases/latest")
+  var APK_URL="https://github.com/"+CONFIG.REPO+"/releases/latest/download/"+CONFIG.APK_NAME;
+  var $=function(i){return document.getElementById(i)};
+  var lang=/^(ru|uk|be|kk)/i.test((navigator.languages&&navigator.languages[0])||navigator.language||"ru")?"ru":"en";
+  try{var saved=localStorage.getItem("ca-lang");if(saved==="ru"||saved==="en")lang=saved}catch(e){}
+  var L=function(ru,en){return lang==="ru"?ru:en};
+  var info=null;
+
+  /* устройство */
+  var ua=navigator.userAgent||"";
+  var ios=/iPhone|iPad|iPod/i.test(ua)||(/Macintosh/i.test(ua)&&navigator.maxTouchPoints>1);
+  var and=/Android/i.test(ua);
+  document.body.setAttribute("data-dev",ios?"ios":and?"and":"desk");
+  if(ios)$("iosd").open=true;
+
+  $("dl").href=APK_URL;
+  $("play").href=CONFIG.GAME_URL;
+
+  function toast(t){var e=$("toast");e.textContent=t;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove("show")},3200)}
+
+  function paint(){
+    document.documentElement.lang=lang;
+    document.title=L("Кристальный алтарь 2 — установить обновление","Crystal Altar 2 — install the update");
+    document.querySelectorAll("[data-ru]").forEach(function(e){e.textContent=e.getAttribute("data-"+lang)});
+    $("lang").textContent=lang==="ru"?"EN":"RU";
+    if(CONFIG.VERSION){$("vnum").textContent=CONFIG.VERSION}
+    if(info){
+      if(!CONFIG.VERSION)$("vnum").textContent=info.num?L("Сборка ","Build ")+info.num:(info.name||"");
+      $("vdate").textContent=info.date?"📅 "+new Date(info.date).toLocaleDateString(lang==="ru"?"ru-RU":"en-US",{day:"numeric",month:"long",year:"numeric"}):"";
+      $("vsize").textContent=info.size?"📦 "+(info.size/1048576).toFixed(1).replace(".",lang==="ru"?",":".")+L(" МБ"," MB"):"";
+      $("vbadge").hidden=false;
+      $("dlsub").textContent=CONFIG.APK_NAME+(info.size?" · "+(info.size/1048576).toFixed(1).replace(".",lang==="ru"?",":".")+L(" МБ"," MB"):"");
+      if(info.body){$("newstxt").textContent=info.body;$("news").hidden=false}
+    }else if(!CONFIG.VERSION){
+      $("vnum").textContent=L("Последняя сборка","Latest build");
+    }
+    if(done){$("dltxt").textContent=L("Загрузка началась","Download started")}
+  }
+
+  /* данные последнего релиза: кэш на 10 минут, при ошибке — просто пропускаем */
+  function parse(j){
+    var a=(j.assets||[]).filter(function(x){return x.name===CONFIG.APK_NAME})[0]||(j.assets||[])[0];
+    var m=/(\d+)\s*$/.exec(j.tag_name||"");
+    var body=(j.body||"").replace(/\r/g,"").trim();
+    return{name:j.name,num:m?m[1]:"",date:j.published_at,size:a?a.size:0,body:body};
+  }
+  try{var c=JSON.parse(sessionStorage.getItem("ca-rel")||"null");if(c&&Date.now()-c.t<6e5){info=c.v}}catch(e){}
+  if(!info){
+    fetch("https://api.github.com/repos/"+CONFIG.REPO+"/releases/latest")
       .then(function(r){return r.ok?r.json():null})
-      .then(function(j){if(j&&j.name&&!CONFIG.VERSION)ver.textContent=j.name})
-      .catch(function(){});
-  }catch(e){}
-  /* на iPhone/iPad APK не ставится — прячем кнопку и оставляем только браузерную версию */
-  if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){dl.style.display="none";play.className="btn main"}
+      .then(function(j){
+        if(!j)return;
+        info=parse(j);
+        try{sessionStorage.setItem("ca-rel",JSON.stringify({t:Date.now(),v:info}))}catch(e){}
+        paint();
+      }).catch(function(){});
+  }
+
+  /* шаги и состояние кнопки */
+  var done=false;
+  function setStep(n){
+    document.querySelectorAll("#steps li").forEach(function(li){
+      var s=+li.getAttribute("data-s");
+      li.className=s<n?"ok":s===n?"on":"";
+    });
+  }
+  $("dl").addEventListener("click",function(){
+    done=true;$("dl").classList.add("done");$("dltxt").textContent=L("Загрузка началась","Download started");
+    setStep(2);
+    toast(L("Загрузка началась. Открой файл из уведомлений или «Загрузок»","Download started. Open the file from notifications or Downloads"));
+    setTimeout(function(){done=false;$("dl").classList.remove("done");paint()},6000);
+  });
+  $("copy").addEventListener("click",function(){
+    var u=location.href.split("#")[0];
+    function ok(){toast(L("Ссылка скопирована","Link copied"))}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(u).then(ok,function(){prompt(L("Скопируй ссылку","Copy the link"),u)})}
+    else prompt(L("Скопируй ссылку","Copy the link"),u);
+  });
+  $("lang").addEventListener("click",function(){
+    lang=lang==="ru"?"en":"ru";
+    try{localStorage.setItem("ca-lang",lang)}catch(e){}
+    paint();
+  });
+  paint();
 })();
 </script>
 </body>
